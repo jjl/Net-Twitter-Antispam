@@ -16,5 +16,6 @@ sub is_user_spammy {
             }
         }
     }
-
+    #As far as we're aware, we have no clue whether they're a spammer
+    return 50;
 }
