@@ -100,19 +100,25 @@ __END__
 
 =head1 SYNOPSIS
 
- A module to oust spammers.
-
-Perhaps a little code snippet.
-
  use Net::Twitter::Antispam;
 
- my $foo = Net::Twitter::Antispam->new();
+ my $spam = Net::Twitter::Antispam->new(username=>'foo',password=>'bar', active_plugins => [
+     'Example', # Example module that ships with N::T::A, counters a previous spam attack
+     'LessThan20', #Hypothetical other module that regards people with less than 20 tweets as spam
+ ];
+
+ # Gets a Net::Twitter
+ my $t = $spam->twitter;
+ foreach my $follower (@{$t->followers}) {
+     say "Spammer: " . $follower->{screen_name} if $spam->is_user_spammy($follower);
+     # You have the full power of Net::Twitter, but I'd question whether auto-blocking is a good strategy ;)
+ }
 
 =head1 FUNCTIONS
 
 =head2 new
 
-Constructs the object, Moose-style
+Constructs the object, Moose-style. Required attributes: username, password, active_plugins
 
 =head1 MEMBER VARIABLES
 
@@ -120,11 +126,24 @@ Constructs the object, Moose-style
 
 =head2 username :: Str
 
+Your twitter username
+
 =head2 password :: Str
+
+Your twitter password
+
+=head2 active_plugins :: ArrayRef
+
+List of plugins (without the Net::Twitter::Antispam::Plugin:: prefix) that you want to activate
 
 =head1 AUTHOR
 
-James Laver, C<< <sprintf(qw(%s at %s.%s cpan jameslaver com))> >>
+James Laver, C<< <sprintf(qw(%s@%s.%s cpan jameslaver com))> >>
+
+=head1 SEE ALSO
+
+L<Net::Twitter> - This wraps part of the API, you'll want to know how to work it.
+L<Net::Twitter::Antispam::Plugin::Example> - An example plugin that blocks a previous twitter spam tactic.
 
 =head1 BUGS
 
