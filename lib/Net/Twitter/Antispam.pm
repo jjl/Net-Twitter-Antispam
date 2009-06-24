@@ -43,7 +43,7 @@ sub is_user_spammy {
     @percentages = map { $self->run_plugin('is_user_spammy',$_,$user) } $self->_user_plugins;
     $avg = (sum @percentages) / scalar @percentages;
     
-    $avg;
+    $avg > 50;
 }
 
 sub is_message_spammy {
@@ -53,7 +53,7 @@ sub is_message_spammy {
     @percentages = map { $self->run_plugin('is_message_spammy',$_,$message) } $self->_message_plugins;
     $avg = (sum @percentages) / scalar @percentages;
     
-    $avg;
+    $avg > 50;
 }
 
 sub run_plugin {
