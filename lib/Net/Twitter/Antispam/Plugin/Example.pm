@@ -63,6 +63,5 @@ This is a method called automatically by Net::Twitter::Antispam. In this case it
 
 L<Net::Twitter::Antispam> - The anti-spam system for twitter
 L<Net::Twitter> - You'll be passed one of these implementing
+
 =cut
-
-
