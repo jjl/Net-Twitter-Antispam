@@ -1,52 +1,71 @@
-Net-Twitter-Antispam
+NAME
+     Net::Twitter::Antispam - Making Twitter usable
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+VERSION
+     Version 0.01
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+SYNOPSIS
+     use Net::Twitter::Antispam;
 
+     my $spam = Net::Twitter::Antispam->new(username=>'foo',password=>'bar', active_plugins => [
+         'Example', # Example module that ships with N::T::A, counters a previous spam attack
+         'LessThan20', #Hypothetical other module that regards people with less than 20 tweets as spam
+     ];
 
-INSTALLATION
+     # Gets a Net::Twitter
+     my $t = $spam->twitter;
+     foreach my $follower (@{$t->followers}) {
+         say "Spammer: " . $follower->{screen_name} if $spam->is_user_spammy($follower);
+         # You have the full power of Net::Twitter, but I'd question whether auto-blocking is a good strategy ;)
+     }
 
-To install this module, run the following commands:
+FUNCTIONS
+  new
+    Constructs the object, Moose-style. Required attributes: username,
+    password, active_plugins
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+MEMBER VARIABLES
+  twitter :: Net::Twitter
+  username :: Str
+    Your twitter username
 
-SUPPORT AND DOCUMENTATION
+  password :: Str
+    Your twitter password
 
-After installing, you can find documentation for this module with the
-perldoc command.
+  active_plugins :: ArrayRef
+    List of plugins (without the Net::Twitter::Antispam::Plugin:: prefix)
+    that you want to activate
 
-    perldoc Net::Twitter::Antispam
+AUTHOR
+    James Laver, "<sprintf(qw(%s@%s.%s cpan jameslaver com))>"
 
-You can also look for information at:
+SEE ALSO
+    Net::Twitter - This wraps part of the API, you'll want to know how to
+    work it. Net::Twitter::Antispam::Plugin::Example - An example plugin
+    that blocks a previous twitter spam tactic.
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-Twitter-Antispam
+BUGS
+    Please report any bugs or feature requests to "bug-net-twitter-antispam
+    at rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Net-Twitter-Antispam>. I
+    will be notified, and then you'll automatically be notified of progress
+    on your bug as I make changes.
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Net-Twitter-Antispam
+SUPPORT
+    *   RT: CPAN's request tracker
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Net-Twitter-Antispam
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-Twitter-Antispam>
 
-    Search CPAN
-        http://search.cpan.org/dist/Net-Twitter-Antispam/
+    *   AnnoCPAN: Annotated CPAN documentation
 
+        <http://annocpan.org/dist/Net-Twitter-Antispam>
 
-COPYRIGHT AND LICENCE
+ACKNOWLEDGEMENTS
+    An anti-thankyou to all of the twitter spammers who made me write this.
 
-Copyright (C) 2009 James Laver
+COPYRIGHT & LICENSE
+    Copyright 2009 James Laver, all rights reserved.
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
