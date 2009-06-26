@@ -51,7 +51,7 @@ sub is_message_spammy {
     my @percentages;
 
     @percentages = map { $self->run_plugin('is_message_spammy',$_,$message) } $self->_message_plugins;
-    $avg = (sum @percentages) / scalar @percentages;
+    my $avg = (sum @percentages) / scalar @percentages;
     
     $avg > 50;
 }
@@ -63,7 +63,7 @@ sub run_plugin {
 }
 
 sub _active_plugins {
-    my ($self) @_;
+    my ($self) = @_;
 
     grep { 
         my $modname = $_;
