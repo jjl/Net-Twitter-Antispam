@@ -120,6 +120,22 @@ __END__
 
 Constructs the object, Moose-style. Required attributes: username, password, active_plugins
 
+=head2 is_message_spammy (Str) => Bool
+
+Runs all active message plugins, gets the mean and returns whether that is over 50%
+
+=head2 is_user_spammy (HashRef) => Bool
+
+Runs all active user plugins, gets the mean and returns whether that is over 50%
+
+=head2 run_plugin ( $plugin_sub_name :: Str, $plugin_name :: Str, Array )
+
+The array at the end (not a ref!) contains args to pass to the plugin. For message plugins, it should get the message body. For user plugins it should get the user hashref returned from Net::Twitter.
+
+Useful if your plugin depends on the result of other plugins.
+
+e.g. run_plugin('is_message_spammy','ContextFreeLinks',$message);
+
 =head1 MEMBER VARIABLES
 
 =head2 twitter :: Net::Twitter
