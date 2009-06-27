@@ -94,6 +94,10 @@ __END__
 
  Net::Twitter::Antispam - Making Twitter usable
 
+=head1 DESCRIPTION
+
+Twitter has been getting more an more full of Spam. Enough is enough, lets make it readable again.
+
 =head1 NOTE
 
 This is an alpha-level module, it lacks tests, it may break, on your own head be it.
