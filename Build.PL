@@ -7,6 +7,7 @@ my $builder = Module::Build->new(
     license             => 'perl',
     dist_author         => 'James Laver <sprintf(qw(%s@%s.%s cpan jameslaver com))>',
     dist_version_from   => 'lib/Net/Twitter/Antispam.pm',
+    dist_abstract       => "Twitter has been getting more an more full of Spam. Enough is enough, lets make it readable again.",
     build_requires => {
         'Test::More' => 0,
     },
