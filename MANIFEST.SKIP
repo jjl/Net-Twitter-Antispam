@@ -1,0 +1,9 @@
+^\.git
+^MANIFEST\.SKIP$
+~$
+\.bak$
+^_build
+^blib
+^Build$
+^.gitignore$
+^.cvsignore$

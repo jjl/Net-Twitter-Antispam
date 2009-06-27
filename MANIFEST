@@ -1,8 +1,12 @@
 Build.PL
 Changes
+lib/Net/Twitter/Antispam.pm
+lib/Net/Twitter/Antispam/Plugin/ContextFreeLinks.pm
+lib/Net/Twitter/Antispam/Plugin/Example.pm
 MANIFEST
 README
-lib/Net/Twitter/Antispam.pm
 t/00-load.t
+t/01-pod.t
+t/02-pod-coverage.t
 t/pod-coverage.t
 t/pod.t
