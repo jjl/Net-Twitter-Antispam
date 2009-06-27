@@ -3,3 +3,6 @@ _build
 blib
 Build
 *.bak
+\#*\#
+Makefile.PL
+META.yml
