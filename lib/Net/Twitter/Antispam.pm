@@ -94,6 +94,12 @@ __END__
 
  Net::Twitter::Antispam - Making Twitter usable
 
+=head1 NOTE
+
+This is an alpha-level module, it lacks tests, it may break, on your own head be it.
+
+But don't let that put you off contributing modules.
+
 =head1 VERSION
 
  Version 0.01
@@ -181,9 +187,19 @@ L<http://annocpan.org/dist/Net-Twitter-Antispam>
 
 =back
 
+=head1 PATCHES WELCOME
+
+As stated this is alpha software. If you find a bug, please fix it in github and send me a message letting me know i need to merge it.
+
+If you want a feature, the API is stupidly easy, you can probably write it easily.
+
+Source is on github: L<http://github.com/jjl/Net-Twitter-Antispam>
+IRC: elpenguin @ irc.perl.org#net-twitter (if I'm not there, I'm probably in #london.pm)
+
 =head1 ACKNOWLEDGEMENTS
 
 An anti-thankyou to all of the twitter spammers who made me write this.
+A thankyou to various #london.pm members who've shown enthusiasm about the project.
 
 =head1 COPYRIGHT & LICENSE
 
